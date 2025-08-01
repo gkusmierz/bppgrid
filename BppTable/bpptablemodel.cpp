@@ -7,6 +7,7 @@
 #include <cmath>
 #include <QDate>
 #include <QDateTime>
+#include <type_traits>
 
 #include <QClipboard>
 #include <QGuiApplication>
@@ -507,7 +508,7 @@ namespace bpp {
 
     void TableModel::clearColumnsDef()
     {
-        for(auto col: qAsConst(columnsDef)){
+        for(auto col: std::as_const(columnsDef)){
             delete col;
         }
         columnsDef.clear();
@@ -638,19 +639,19 @@ namespace bpp {
         const QVariant& colVal = dataVal[whatRow][index.column()];
         switch ( getColumnDef( index.column() ).type) {
         case TableColumn::Str:
-            if(colVal.isNull()) return QVariant(QVariant::String);
+            if(colVal.isNull()) return QVariant(QString());
             else                return colVal.toString();
         case TableColumn::Dbl:
-            if(colVal.isNull()) return QVariant(QVariant::Double);
+            if(colVal.isNull()) return QVariant(double());
             else                return colVal.toDouble();
         case TableColumn::Int:
-            if(colVal.isNull()) return QVariant(QVariant::Int);
+            if(colVal.isNull()) return QVariant(int());
             else                return colVal.toInt();
         case TableColumn::Date:
-            if(colVal.isNull()) return QVariant(QVariant::Date);
+            if(colVal.isNull()) return QVariant(QDate());
             else                return colVal.toDate();
         case TableColumn::DateTime:
-            if(colVal.isNull()) return QVariant(QVariant::DateTime);
+            if(colVal.isNull()) return QVariant(QDateTime());
             else                return colVal.toDateTime();
         }
         return colVal.toString();

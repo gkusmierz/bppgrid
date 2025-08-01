@@ -10,10 +10,9 @@ namespace bpp {
     }
 
     bool FontAwesome::registerFont(const QString& fontFile) {
-        QFontDatabase fontDatabase;
-        int idSolid = fontDatabase.addApplicationFont(fontFile);
+        int idSolid = QFontDatabase::addApplicationFont(fontFile);
         if (idSolid >= 0){
-            QStringList ll = fontDatabase.applicationFontFamilies(idSolid);
+            QStringList ll = QFontDatabase::applicationFontFamilies(idSolid);
             for(auto& item: ll){
                 qDebug() << item << "Registered";
                 if(item.contains("brands", Qt::CaseInsensitive))

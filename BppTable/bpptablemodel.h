@@ -122,11 +122,11 @@ namespace bpp {
 
         QVariantList addFrontRecords;
 
-        QVariant emptyVString = QVariant(QVariant::String);
-        QVariant emptyVDouble = QVariant(QVariant::Double);
-        QVariant emptyVInt = QVariant(QVariant::Int);
-        QVariant emptyVDate = QVariant(QVariant::Date);
-        QVariant emptyVDateTime = QVariant(QVariant::DateTime);
+        QVariant emptyVString = QVariant();
+        QVariant emptyVDouble = QVariant();
+        QVariant emptyVInt = QVariant(TableColumn::Int);
+        QVariant emptyVDate = QVariant(TableColumn::Date);
+        QVariant emptyVDateTime = QVariant(TableColumn::DateTime);
 
         QVector<int> onlyHighlightRole;
     };
