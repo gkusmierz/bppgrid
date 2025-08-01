@@ -14,8 +14,6 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("bigno.it");
     QCoreApplication::setOrganizationName("bpp");
 
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
     QGuiApplication app(argc, argv);
     QQuickStyle::setStyle("Material");
 

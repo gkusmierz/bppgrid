@@ -32,3 +32,9 @@
 *.app
 *.user
 /examples/bin
+examples/color_grid/build/
+examples/fromDb/build/
+examples/fromDbPagination/build/
+examples/simple_array/build/
+examples/simple_w_buttons/build/
+examples/with_json_cpp_be/build/
