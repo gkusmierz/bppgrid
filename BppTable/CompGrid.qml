@@ -1,11 +1,30 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.12
+import Qt5Compat.GraphicalEffects
 import QtQuick.Controls 2.14
 import BppTable 0.1
 
 Item {
     id: mainItem
+    
+    // Enable keyboard focus handling
+    focus: true
+    activeFocusOnTab: true
+    
+    // Handle keyboard navigation
+    Keys.onPressed: (event) => {
+        if (event.key === Qt.Key_Up) {
+            if (selectedRow > 0) {
+                setSelectedRow(selectedRow - 1)
+            }
+            event.accepted = true
+        } else if (event.key === Qt.Key_Down) {
+            if (selectedRow < rows() - 1) {
+                setSelectedRow(selectedRow + 1)
+            }
+            event.accepted = true
+        }
+    }
     property int dataHeight: 30
     property int frontHeight: 30
     property color dataHighlight: "darkturquoise"
